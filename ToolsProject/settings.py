@@ -25,12 +25,13 @@ SECRET_KEY = 'mfl0ekv+j5ohj+v_%1d0&0y%ag+_fqifk#1cjmcsx*1+hl6tc8'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'SquirrelTracker.apps.SquirreltrackerConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
