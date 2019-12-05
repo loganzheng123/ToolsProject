@@ -19,26 +19,34 @@ class Command(BaseCommand):
             fields_name = next(reader)
             for i,_ in enumerate(fields_name):
                 fields_name[i] = fields_name[i].lower()
+                if fields_name[i][-1].strip()=='y':
+                    fields_name[i]='latitude'
+                elif fields_name[i][-1].strip()=='x':
+                    fields_name[i]='longitude'
+                else:
+                    pass
                 fields_name[i] = fields_name[i].replace(' ','_')
-                if not fields_name[i] in model_fields:
-                    raise CommandError (f"{fields_name[i]} does not exist in the model.")
+
                     
             for row in reader:
                 try:
                     obj = Squirrel_Census()
                     for i,field in enumerate(row):
-                        if fields_name[i] == 'date':
-                            value = str(field)[4:]+'-'+str(field)[:2]+'-'+str(field)[2:4]
-                            setattr(obj, fields_name[i],value)
-                        else:
-                            if str(field)=='TRUE':
-                                value = True
-                                setattr(obj, fields_name[i],value)
-                            elif str(field)=='FALSE':
-                                value = False
+                        if fields_name[i] in model_fields:
+                            if fields_name[i] == 'date':
+                                value = str(field)[4:]+'-'+str(field)[:2]+'-'+str(field)[2:4]
                                 setattr(obj, fields_name[i],value)
                             else:
-                                setattr(obj, fields_name[i],field)
+                                if str(field).lower()=='true':
+                                    value = True
+                                    setattr(obj, fields_name[i],value)
+                                elif str(field).lower()=='false':
+                                    value = False
+                                    setattr(obj, fields_name[i],value)
+                                else:
+                                    setattr(obj, fields_name[i],field)
+                        else:
+                            pass
                     obj.save()
                 except Exception as e:
                     raise CommandError(e)
