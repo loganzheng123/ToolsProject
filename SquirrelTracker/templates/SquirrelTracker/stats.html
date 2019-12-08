@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+  <body>
+    <h1>{{title}}</h1>
+    
+    <ul>
+        {% for field in fields %}
+            <li>{{field}}</li>
+        {% endfor %}
+    </ul>
+    <table border="1" cellpadding="0" cellspacing="0" style="border-collapse:collapse;">
+        <tr><th>Property</th><th>Catetory</th></tr>
+        {% for key, value in stats_content.items %}
+            <tr>
+                <td><h5>{{key}}</h5></td>
+                <td> 
+                        <table border="1" cellpadding="0" cellspacing="0" style="border-collapse:collapse;">
+                                <tr>
+                                    <th>{{key}}</th>
+                                    <th>count</th>
+                                </tr>
+                                {% for sc in value %}
+                                <tr>
+                                    
+                                    <td>{{sc.property}}</td>
+                                    <td>{{sc.dcount}}</td>
+                                    
+                                    
+                                </tr>
+                                {% endfor %}
+        
+                            </table>
+
+
+                </td>
+
+                    
+            </tr>
+            
+        {% endfor %}
+    
+    </table>
+    
+  </body>
+</html>
