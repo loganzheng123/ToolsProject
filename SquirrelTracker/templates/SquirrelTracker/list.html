@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+  <body>
+    <h1>{{title}}</h1>
+    <p><a href="/SquirrelTracker/sightings/add">Add New Item</a></p>
+    <table border="1" cellpadding="0" cellspacing="0" style="border-collapse:collapse;">
+        <tr>
+            {% for field in fields %}
+            <th>{{field}}</th>
+            {% endfor %}
+        </tr>
+        {% for sc in Squirrel_Census_list %}
+        <tr>
+          <td><a href="/SquirrelTracker/sightings/{{sc.id}}">{{sc.id}}</a></td>
+	    <td>{{sc.latitude}}</td>
+            <td>{{sc.longitude}}</td>
+            <td>{{sc.unique_squirrel_id}}</td>
+            <td>{{sc.shift}}</td>
+            <td>{{sc.date}}</td>
+            <td>{{sc.age}}</td>
+            <td>{{sc.primary_fur_color}}</td>
+            <td>{{sc.location}}</td>
+            <td>{{sc.specific_location}}</td>
+            <td>{{sc.running}}</td>
+            <td>{{sc.chasing}}</td>
+            <td>{{sc.climbing}}</td>
+            <td>{{sc.eating}}</td>
+            <td>{{sc.foraging}}</td>
+            <td>{{sc.other_activities}}</td>
+            <td>{{sc.kuks}}</td>
+            <td>{{sc.quaas}}</td>
+            <td>{{sc.moans}}</td>
+            <td>{{sc.tail_flags}}</td>
+            <td>{{sc.tail_twitches}}</td>
+            <td>{{sc.approaches}}</td>
+            <td>{{sc.indifferent}}</td>
+            <td>{{sc.runs_from}}</td>
+            
+        </tr>
+        {% endfor %}
+
+    </table>
+    
+  </body>
+</html>
