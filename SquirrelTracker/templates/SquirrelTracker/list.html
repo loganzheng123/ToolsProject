@@ -11,7 +11,7 @@
         </tr>
         {% for sc in Squirrel_Census_list %}
         <tr>
-          <td>{{sc.id}}</td>
+          <td><a href="/SquirrelTracker/sightings/{{sc.id}}">{{sc.id}}</a></td>
             <td>{{sc.latitude}}</td>
             <td>{{sc.longitude}}</td>
             <td>{{sc.unique_squirrel_id}}</td>
