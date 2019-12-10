@@ -9,7 +9,7 @@ from django.db.models import Count
 
 # Create your views here.
 def index(request):
-    response = "Hello, This is the SquirrelTracker Project of Group 54 in section 1. Please see /sightings/."
+    response = "Hello, This is the SquirrelTracker Project of Group 54 in section 1. Please see /sightings/ and /map/."
     return HttpResponse(response)
 
 def sightings(request):
